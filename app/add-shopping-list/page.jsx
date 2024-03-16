@@ -7,7 +7,7 @@ export default function AddShoppingList() {
     const router = useRouter();
     const [shopping, setShopping] = useState({ where: "", when: "" });
     const [submitting, setSubmitting] = useState(false);
-
+    
     const addShoppingList = async (e) => {
         e.preventDefault();
         setSubmitting(true);
@@ -15,7 +15,7 @@ export default function AddShoppingList() {
             const response = await fetch("/api/shopping/new", {
                 method: "POST",
                 body: JSON.stringify({
-                    when: shopping.when,
+                    when: shopping.when.split("-").reverse().join("/"),
                     where: shopping.where
                 })
             });
@@ -30,37 +30,34 @@ export default function AddShoppingList() {
         }
     }
     return (
-        <form onSubmit={addShoppingList} className="flex flex-col">
-            <label>
-                <span className="font-bold text-2xl">
-                    When did you get shopping?
-                </span>
+        <form onSubmit={addShoppingList} className="form">
+            <div>
+                <label className="label-form-text">When did you get shopping?</label>
                 <input
                     value={shopping.when}
                     onChange={(e) => setShopping({ ...shopping, when: e.target.value })}
                     type="date"
-                    className="text-black"
+                    className="text-black "
                     required
                 />
-            </label>
-            <label>
-                <span className="font-bold text-2xl">
-                    Where did you get shopping?
-                </span>
+            </div>
+            <div>
+                <label className="label-form-text">Where did you get shopping?</label>
                 <input
                     value={shopping.where}
                     onChange={(e) => setShopping({ ...shopping, where: e.target.value })}
                     type="text"
                     className="text-black"
+                    placeholder="Esselunga, Conad, ..."
                     required
                 />
-            </label>
+            </div>
             <button
                 type='submit'
                 disabled={submitting}
-                className='green_gradient_nt h-12 px-5 ml-3 rounded-full text-white'
+                className='black_btn'
             >
-                Add new shopping
+                Add new shopping list
             </button>
         </form>
     );

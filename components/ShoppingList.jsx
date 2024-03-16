@@ -9,18 +9,30 @@ const ShoppingList = ({ data }) => {
     }
 
     return (
-        <div>
+        <div className="flex flex-row gap-5 flex-wrap mb-10">
             {data.map((shoppingItem) => (
-                <button 
+                <div 
+                    class="card"
                     onClick={() => showItemsOfShopping(shoppingItem)}
                     key={shoppingItem._id}
                 >
-                    <p>{shoppingItem.where}</p>
-                    <p>{shoppingItem.when}</p>
-                </button>
+                    <div class="title">
+                        <p class="title-text">
+                            {shoppingItem.where}
+                        </p>
+                    </div>
+                    <div class="data">
+                        <p>
+                            {shoppingItem.when}
+                        </p>
+                    </div>
+                </div>
             ))}
         </div>
     )
 }
+
+
+
 
 export default ShoppingList;

@@ -9,7 +9,7 @@ const AddItem = () => {
   const [item, setItem] = useState({ description: "", brand: "", expiryDate: "", batchNumber: "" });
   const [submitting, setSubmitting] = useState(false);
 
-  const addShoppingList = async (e) => {
+  const addItemToShoppingList = async (e) => {
     e.preventDefault();
     setSubmitting(true);
     try {
@@ -19,7 +19,7 @@ const AddItem = () => {
           shoppingId: shoppingId,
           description: item.description,
           brand: item.brand,
-          expiryDate: item.expiryDate,
+          expiryDate: item.expiryDate.split("-").reverse().join("/"),
           batchNumber: item.batchNumber,
         })
       });
@@ -34,11 +34,9 @@ const AddItem = () => {
     }
   }
   return (
-    <form onSubmit={addShoppingList} className="flex flex-col">
-      <label>
-        <span className="font-bold text-2xl">
-          Product name:
-        </span>
+    <form onSubmit={addItemToShoppingList} className="form">
+      <div>
+        <label className="label-form-text">Product name:</label>
         <input
           value={item.description}
           onChange={(e) => setItem({ ...item, description: e.target.value })}
@@ -46,11 +44,9 @@ const AddItem = () => {
           className="text-black"
           required
         />
-      </label>
-      <label>
-        <span className="font-bold text-2xl">
-          Brand name:
-        </span>
+      </div>
+      <div>
+        <label className="label-form-text">Brand name:</label>
         <input
           value={item.brand}
           onChange={(e) => setItem({ ...item, brand: e.target.value })}
@@ -58,11 +54,9 @@ const AddItem = () => {
           className="text-black"
           required
         />
-      </label>
-      <label>
-        <span className="font-bold text-2xl">
-          Expiry date:
-        </span>
+      </div>
+      <div>
+        <label className="label-form-text">Expiry date:</label>
         <input
           value={item.expiryDate}
           onChange={(e) => setItem({ ...item, expiryDate: e.target.value })}
@@ -70,11 +64,9 @@ const AddItem = () => {
           className="text-black"
           required
         />
-      </label>
-      <label>
-        <span className="font-bold text-2xl">
-          Batch number:
-        </span>
+      </div>
+      <div>
+        <label className="label-form-text">Batch number:</label>
         <input
           value={item.batchNumber}
           onChange={(e) => setItem({ ...item, batchNumber: e.target.value })}
@@ -82,13 +74,13 @@ const AddItem = () => {
           className="text-black"
           required
         />
-      </label>
+      </div>
       <button
         type='submit'
         disabled={submitting}
-        className='green_gradient_nt h-12 px-5 ml-3 rounded-full text-white'
+        className='black_btn'
       >
-        Add new shopping
+        Add new item to list
       </button>
     </form>
   );
