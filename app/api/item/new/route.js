@@ -10,7 +10,7 @@ export const POST = async (request) => {
             shopping: requestData.shoppingId, 
             description: requestData.description, 
             brand: requestData.brand, 
-            expiryDate: requestData.expiryDate, 
+            expiry: requestData.expiry, 
             batchNumber: requestData.batchNumber 
         });
         console.log(newItem);

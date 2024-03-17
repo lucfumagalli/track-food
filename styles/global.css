@@ -14,7 +14,7 @@ body {
 }
 
 .card {
-    @apply min-w-40 min-h-24 px-5 py-4 bg-white border-2 border-white shadow-md max-w-80 rounded-2xl cursor-pointer hover:border-green-600 active:border-green-600;
+    @apply min-w-40 min-h-24 px-5 py-4 bg-white border-2 border-white shadow-md max-w-80 rounded-2xl cursor-pointer hover:border-primary-green active:border-primary-green;
 }
 
 .title {
@@ -48,7 +48,7 @@ body {
 }
 
 .black_btn{
-    @apply w-fit rounded-full border-2 border-black bg-black text-white h-11 px-5 transition-all hover:bg-transparent hover:text-black hover:border-green-600 flex text-center items-center duration-300;
+    @apply w-fit rounded-full border-2 border-black bg-black text-white h-11 px-5 transition-all hover:bg-transparent hover:text-black hover:border-primary-green flex text-center items-center duration-300;
 }
 
 .glassmorphism {

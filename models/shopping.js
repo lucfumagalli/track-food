@@ -6,7 +6,7 @@ const ShoppingSchema = new Schema({
         required: [true, 'Where the shopping have been done'],
     },
     when: {
-        type: String,
+        type: Date,
         required: [true, 'When the shopping have been done'],
     },
 });

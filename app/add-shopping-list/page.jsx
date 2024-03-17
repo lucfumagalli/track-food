@@ -15,7 +15,7 @@ export default function AddShoppingList() {
             const response = await fetch("/api/shopping/new", {
                 method: "POST",
                 body: JSON.stringify({
-                    when: shopping.when.split("-").reverse().join("/"),
+                    when: shopping.when,
                     where: shopping.where
                 })
             });

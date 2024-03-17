@@ -14,8 +14,8 @@ const ItemSchema = new Schema({
         type: String,
         required: [true, 'item brand'],
     },
-    expiryDate: {
-        type: String,
+    expiry: {
+        type: Date,
         required: [true, 'When the item will expire'],
     },
     batchNumber: {

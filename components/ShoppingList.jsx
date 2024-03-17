@@ -1,8 +1,12 @@
 'use client'
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import DateFormatter from "./DateFormatter";
 
 const ShoppingList = ({ data }) => {
     const router = useRouter();
+
+    const [date, setDate] = useState(new Date("<dd-mm-YYYY>"));
 
     const showItemsOfShopping = async (shoppingItem) => {
         router.push(`/${shoppingItem._id}`);
@@ -11,19 +15,21 @@ const ShoppingList = ({ data }) => {
     return (
         <div className="flex flex-row gap-5 flex-wrap mb-10">
             {data.map((shoppingItem) => (
-                <div 
-                    class="card"
+                <div
+                    className="card"
                     onClick={() => showItemsOfShopping(shoppingItem)}
                     key={shoppingItem._id}
                 >
-                    <div class="title">
-                        <p class="title-text">
+                    <div className="title">
+                        <p className="title-text">
                             {shoppingItem.where}
                         </p>
                     </div>
-                    <div class="data">
+                    <div className="data">
                         <p>
-                            {shoppingItem.when}
+                            <DateFormatter
+                                date={shoppingItem.when}
+                            />
                         </p>
                     </div>
                 </div>

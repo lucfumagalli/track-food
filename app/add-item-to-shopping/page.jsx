@@ -6,7 +6,7 @@ const AddItem = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const shoppingId = searchParams.get("shoppingId");
-  const [item, setItem] = useState({ description: "", brand: "", expiryDate: "", batchNumber: "" });
+  const [item, setItem] = useState({ description: "", brand: "", expiry: "", batchNumber: "" });
   const [submitting, setSubmitting] = useState(false);
 
   const addItemToShoppingList = async (e) => {
@@ -19,11 +19,11 @@ const AddItem = () => {
           shoppingId: shoppingId,
           description: item.description,
           brand: item.brand,
-          expiryDate: item.expiryDate.split("-").reverse().join("/"),
+          expiry: item.expiry,
           batchNumber: item.batchNumber,
         })
       });
-
+      // .split("-").reverse().join("/")
       if (response.ok) {
         router.push("/");
       }
@@ -58,8 +58,8 @@ const AddItem = () => {
       <div>
         <label className="label-form-text">Expiry date:</label>
         <input
-          value={item.expiryDate}
-          onChange={(e) => setItem({ ...item, expiryDate: e.target.value })}
+          value={item.expiry}
+          onChange={(e) => setItem({ ...item, expiry: e.target.value })}
           type="date"
           className="text-black"
           required

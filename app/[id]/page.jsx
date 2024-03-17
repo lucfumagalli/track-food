@@ -21,8 +21,8 @@ const ItemsList = ({ params }) => {
 
     if (loading) {
         return (
-        <div class="relative flex w-64 animate-pulse gap-2 p-4">
-            <div class="min-w-40 min-h-24 rounded-2xl bg-slate-300"></div>
+        <div className="relative flex w-64 animate-pulse gap-2 p-4">
+            <div className="min-w-40 min-h-24 rounded-2xl bg-slate-300"></div>
         </div>
         )
     }
