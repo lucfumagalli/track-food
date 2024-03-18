@@ -8,6 +8,8 @@ const AddItem = () => {
   const shoppingId = searchParams.get("shoppingId");
   const [item, setItem] = useState({ description: "", brand: "", expiry: "", batchNumber: "" });
   const [submitting, setSubmitting] = useState(false);
+  const [disableBatch, setDisableBatch] = useState(false);
+
 
   const addItemToShoppingList = async (e) => {
     e.preventDefault();
@@ -20,12 +22,12 @@ const AddItem = () => {
           description: item.description,
           brand: item.brand,
           expiry: item.expiry,
-          batchNumber: item.batchNumber,
+          batchNumber: disableBatch ? item.expiry : item.batchNumber,
         })
       });
-      // .split("-").reverse().join("/")
+
       if (response.ok) {
-        router.push("/");
+        router.push(`/${shoppingId}`);
       }
     } catch (error) {
       console.log(error)
@@ -41,7 +43,7 @@ const AddItem = () => {
           value={item.description}
           onChange={(e) => setItem({ ...item, description: e.target.value })}
           type="text"
-          className="text-black"
+          className="text-black input-form"
           required
         />
       </div>
@@ -51,7 +53,7 @@ const AddItem = () => {
           value={item.brand}
           onChange={(e) => setItem({ ...item, brand: e.target.value })}
           type="text"
-          className="text-black"
+          className="text-black input-form"
           required
         />
       </div>
@@ -61,7 +63,7 @@ const AddItem = () => {
           value={item.expiry}
           onChange={(e) => setItem({ ...item, expiry: e.target.value })}
           type="date"
-          className="text-black"
+          className="text-black input-form"
           required
         />
       </div>
@@ -71,10 +73,17 @@ const AddItem = () => {
           value={item.batchNumber}
           onChange={(e) => setItem({ ...item, batchNumber: e.target.value })}
           type="text"
-          className="text-black"
+          disabled={disableBatch}
+          className="text-black input-form"
           required
         />
       </div>
+      <label className="text-gray-500 ">
+        <input className="mr-2 focus:text-primary-green rounded-lg" type="checkbox" onChange={(e) => setDisableBatch(e.target.checked)}/>
+        <span className="text-sm">
+          Batch number is the same as expiration date
+        </span>
+      </label>
       <button
         type='submit'
         disabled={submitting}

@@ -37,7 +37,7 @@ export default function AddShoppingList() {
                     value={shopping.when}
                     onChange={(e) => setShopping({ ...shopping, when: e.target.value })}
                     type="date"
-                    className="text-black "
+                    className="text-black input-form"
                     required
                 />
             </div>
@@ -47,7 +47,7 @@ export default function AddShoppingList() {
                     value={shopping.where}
                     onChange={(e) => setShopping({ ...shopping, where: e.target.value })}
                     type="text"
-                    className="text-black"
+                    className="text-black input-form"
                     placeholder="Esselunga, Conad, ..."
                     required
                 />

@@ -39,18 +39,42 @@ body {
     @apply mt-4 w-full max-w-lg flex flex-col gap-7 p-7 bg-white shadow-sm glassmorphism rounded-2xl;
 }
 
-.form input {
-    @apply w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 focus:outline-gray-300 focus:outline-none focus:outline-offset-0;
+.input-form {
+    @apply w-full rounded-lg mt-2 p-3 text-sm text-gray-500 focus:outline-gray-300 focus:outline-none focus:outline-offset-0;
 }
 
 .label-form-text {
     @apply text-lg font-bold;
 }
 
-.black_btn{
+.black_btn {
     @apply w-fit rounded-full border-2 border-black bg-black text-white h-11 px-5 transition-all hover:bg-transparent hover:text-black hover:border-primary-green flex text-center items-center duration-300;
 }
 
 .glassmorphism {
     @apply rounded-xl border border-gray-200 bg-white/20 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur;
-  }
+}
+
+.item-table {
+    @apply mx-auto;
+}
+
+.item-table thead tr th:first-child {
+    @apply rounded-tl-2xl;
+}
+
+.item-table thead tr th:last-child {
+    @apply rounded-tr-2xl;
+}
+
+.item-table tbody tr td:last-child {
+    @apply rounded-br-2xl;
+}
+
+.item-table tbody tr td:last-child {
+    @apply rounded-bl-2xl;
+}
+
+.item-table th {
+    @apply min-w-72;
+}

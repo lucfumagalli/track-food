@@ -5,7 +5,6 @@ export const POST = async (request) => {
     const requestData = await request.json();
     try {
         await connectToDb();
-        console.log(requestData);
         const newItem = new Item({
             shopping: requestData.shoppingId, 
             description: requestData.description, 
@@ -13,7 +12,6 @@ export const POST = async (request) => {
             expiry: requestData.expiry, 
             batchNumber: requestData.batchNumber 
         });
-        console.log(newItem);
         await newItem.save();
         return new Response(JSON.stringify(newItem), { status: 201 });
     } catch (error) {

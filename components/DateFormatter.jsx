@@ -1,11 +1,15 @@
 import { format } from "date-fns"
 
 const DateFormatter = ({ date }) => {
-    const str = format(
-        new Date(date),
-        'dd/MM/yyyy'
-    );
-    return <>{str}</>
+    try {
+        const str = format(
+            new Date(date),
+            'dd/MM/yyyy'
+        );
+        return <>{str}</>
+    } catch (error) {
+        return <>{date}</>
+    }
 }
 
 export default DateFormatter
